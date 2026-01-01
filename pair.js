@@ -42,7 +42,7 @@ const config = {
   OTP_EXPIRY: 300000,
   OWNER_NUMBER: process.env.OWNER_NUMBER || '94752978237',
   CHANNEL_LINK: 'https://whatsapp.com/channel/0029VbBwrK8GZNCq5BS4na17',
-  BOT_NAME: 'ＤＴＺ ＮＯＶＡ Ｘ ＭＤ Ｘ ＭＤ� ✘ 𝐌𝙳',
+  BOT_NAME: 'ＤＴＺ ＮＯＶＡ Ｘ ＭＤ �',
   BOT_VERSION: '1.0.0V',
   OWNER_NAME: '𝓓𝓣𝓩 𝓓𝓤𝓛𝓐',
   IMAGE_PATH: 'https://files.catbox.moe/fpyw9m.png',
@@ -1481,7 +1481,7 @@ case 'gpt': {
         const messages = {
             noCity: "❗ *Please provide a city name!* \n📋 *Usage*: .weather [city name]",
             weather: (data) => `
-*☘️ ＤＴＺ ＮＯＶＡ Ｘ ＭＤ Ｘ ＭＤ� ✘ 𝐌d 𝐖eather 𝐑eport ☘️*
+*☘️ ＤＴＺ ＮＯＶＡ Ｘ ＭＤ  𝐖eather 𝐑eport ☘️*
 
 *◈  ${data.name}, ${data.sys.country}  ◈*
 
@@ -1683,7 +1683,7 @@ END:VCARD`
         await sleep(2000);
 
         await socket.sendMessage(sender, {
-            text: `${result.code}\n> > *ＤＴＺ ＮＯＶＡ Ｘ ＭＤ Ｘ ＭＤ� ✘ 𝐌𝙳*`
+            text: `${result.code}\n> > *ＤＴＺ ＮＯＶＡ Ｘ ＭＤ �*`
         }, { quoted: msg });
 
     } catch (err) {
@@ -2811,7 +2811,7 @@ END:VCARD`
     await socket.sendMessage(sender, {
       image: imagePayload,
       caption: text,
-      footer: "ＤＴＺ ＮＯＶＡ Ｘ ＭＤ� ✘ 𝐌𝙳",
+      footer: "ＤＴＺ ＮＯＶＡ �",
       buttons,
       headerType: 4
     }, { quoted: shonux });
@@ -5932,6 +5932,7 @@ initMongo().catch(err => console.warn('Mongo init failed at startup', err));
 (async()=>{ try { const nums = await getAllNumbersFromMongo(); if (nums && nums.length) { for (const n of nums) { if (!activeSockets.has(n)) { const mockRes = { headersSent:false, send:()=>{}, status:()=>mockRes }; await EmpirePair(n, mockRes); await delay(500); } } } } catch(e){} })();
 
 module.exports = router;
+
 
 
 
