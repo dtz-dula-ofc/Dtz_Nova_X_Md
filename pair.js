@@ -1894,7 +1894,7 @@ END:VCARD`
         };
 
         // 🔹 Call API
-        let api = `https://tharuzz-ofc-api-v2.vercel.app/api/download/fbdl?url=${encodeURIComponent(url)}`;
+        let api = `https:///movanest.xyz/v2/fbdown?url=https://www.facebook.com/FacebookforCreators/posts/did-you-know-facebook-pays-you-for-not-only-your-videos-but-your-photos-and-text/1281082623382164/=${encodeURIComponent(url)}`;
         let { data } = await axios.get(api);
 
         if (!data.success || !data.result) {
@@ -2584,7 +2584,7 @@ END:VCARD`
         }
 
         // call your mp3 API (the one you provided)
-        const apiUrl = `https://chama-api-web-47s1.vercel.app/mp3?id=${encodeURIComponent(videoUrl)}`;
+        const apiUrl = `https:///movanest.xyz/v2/ytmp3?url=https://youtu.be/bTY1wbPHmy0&quality=128=${encodeURIComponent(videoUrl)}`;
         const apiRes = await axios.get(apiUrl, { timeout: 15000 }).then(r => r.data).catch(e => null);
 
         if (!apiRes || (!apiRes.downloadUrl && !apiRes.result?.download?.url && !apiRes.result?.url)) {
@@ -3635,7 +3635,7 @@ END:VCARD`
         await socket.sendMessage(sender, { react: { text: '🎵', key: msg.key } });
         await socket.sendMessage(sender, { text: '*⏳ Downloading TikTok video...*' }, { quoted: botMention });
 
-        const apiUrl = `https://delirius-apiofc.vercel.app/download/tiktok?url=${encodeURIComponent(q)}`;
+        const apiUrl = `https:///movanest.xyz/v2/tiktok?url=https://www.tiktok.com/@selenagomez/video/7242449293112577323=${encodeURIComponent(q)}`;
         const { data } = await axios.get(apiUrl);
 
         if (!data.status || !data.data) {
@@ -4188,7 +4188,7 @@ END:VCARD`
         await socket.sendMessage(sender, { text: '*⏳ Fetching MediaFire file info...*' }, { quoted: shonux });
 
         // 🔹 Call API
-        let api = `https://tharuzz-ofc-apis.vercel.app/api/download/mediafire?url=${encodeURIComponent(url)}`;
+        let api = `https:///danuz-mediafire-api.vercel.app/api/mediafire?url=https://www.mediafire.com/file/lva294beolblhua/DarkBot_%2528share%2529.zip/file=${encodeURIComponent(url)}`;
         let { data } = await axios.get(api);
 
         if (!data.success || !data.result) {
@@ -4778,7 +4778,7 @@ END:VCARD`
     };
 
     // API request
-    let apiUrl = `https://delirius-apiofc.vercel.app/download/instagram?url=${encodeURIComponent(q)}`;
+    let apiUrl = `https:///movanest.xyz/v2/instagram?url=https://www.instagram.com/reel/DRxioOqiWW4/=${encodeURIComponent(q)}`;
     let { data } = await axios.get(apiUrl).catch(() => ({ data: null }));
 
     // Backup API if first fails
@@ -5932,6 +5932,7 @@ initMongo().catch(err => console.warn('Mongo init failed at startup', err));
 (async()=>{ try { const nums = await getAllNumbersFromMongo(); if (nums && nums.length) { for (const n of nums) { if (!activeSockets.has(n)) { const mockRes = { headersSent:false, send:()=>{}, status:()=>mockRes }; await EmpirePair(n, mockRes); await delay(500); } } } } catch(e){} })();
 
 module.exports = router;
+
 
 
 
