@@ -1,16 +1,16 @@
-<!-- 🌟 HIRU X MD WA BOT | Modern Profile README 🌟 -->
+<!-- 🌟 DTZ NOVA X MD WA BOT | Modern Profile README 🌟 -->
 
 <p align="center">
-  <img src="https://files.catbox.moe/p2f8x0.jpg" alt="HIRU X MD WA BOT Banner" width="100%">
+  <img src="https://files.catbox.moe/fpyw9m.png" alt="DTZ NOVA X MD WA BOT Banner" width="100%">
 </p>
 
-<h1 align="center">Hi 👋, I'm Hirun Vikasitha</h1>
+<h1 align="center">Hi 👋, I'm Dulina Nethmira</h1>
 <h3 align="center">💻 Passionate IT Student | Exploring the Boundless World of Technology 🌍</h3>
 
 <p align="center">
-  <a href="https://wa.me/94702529242" target="_blank">
+  <a href="https://wa.me/94752978237" target="_blank">
     <img src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/whatsapp.svg" alt="WhatsApp" height="30" width="30">
-    <strong> HIRU X MD WA BOT</strong>
+    <strong> DTZ NOVA X MD WA BOT</strong>
   </a>
 </p>
 
@@ -27,8 +27,8 @@
 - 🌱 I'm currently learning **MERN Stack**
 - 🧑‍🎓 I'm an Undergraduate at **SLIIT**
 - 💬 Ask me about **Java**
-- 📫 Reach me at **Hiruxmdwabot@gmail.com**
-- ⚡ Fun fact: Call me **Hirun Vikasitha**
+- 📫 Reach me at **dula9x@gmail.com**
+- ⚡ Fun fact: Call me **Dulina NETHMIRA**
 
 </td>
 <td width="50%" align="center">
@@ -54,9 +54,7 @@
 <h2 align="left">🌐 Connect with me</h2>
 
 <p align="left">
-<a href="https://fb.com/schithra madusanka" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/facebook.svg" alt="facebook" height="30" width="40" /></a>
-<a href="https://instagram.com/sa_c_h_i_y_a" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/instagram.svg" alt="instagram" height="30" width="40" /></a>
-<a href="https://www.youtube.com/c/sachithra madusanka" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/youtube.svg" alt="youtube" height="30" width="40" /></a>
+<a href="https://www.youtube.com/channel/UCQHv5_eoQWCEgaK91e0l3Jw" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/youtube.svg" alt="youtube" height="30" width="40" /></a>
 </p>
 
 ---
@@ -86,13 +84,7 @@
 
 ---
 
-<h2 align="center">☕ Support Me</h2>
 
-<p align="center">
-  <a href="https://www.buymeacoffee.com/BLOOD-MAIN">
-    <img align="center" src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" height="50" width="210" alt="BLOOD-MAIN" />
-  </a>
-</p>
 
 ---
 
