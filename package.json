@@ -1,7 +1,7 @@
 {
-  "name": "𝙲𝙷𝙰𝙼𝙰 𝙼𝙳 𝙼𝙸𝙽𝙸 𝙱𝙾𝚃",
+  "name": "𝓓𝓣𝓩 𝓝𝓞𝓥𝓐 𝚇 𝐌𝙳 𝐌𝙸𝙽𝙸 𝐁𝙾𝚃 ",
   "version": "1.0.0",
-  "description": "𝙲𝙷𝙰𝙼𝙰 𝙼𝙳 𝙼𝙸𝙽𝙸 𝙱𝙾𝚃 WhatsApp Bot with Multi-Number Support",
+  "description": "𝓓𝓣𝓩 𝓝𝓞𝓥𝓐 𝚇 𝐌𝙳 𝐌𝙸𝙽𝙸 𝐁𝙾𝚃 WhatsApp Bot with Multi-Number Support",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
