@@ -27,7 +27,7 @@ const {
 
 // ---------------- CONFIG ----------------
 
-const BOT_NAME_FANCY = 'ＤＴＺ ＮＯＶＡ Ｘ ＭＤ Ｘ ＭＤ� 𝚇 𝐌𝙳 𝐌𝙸𝙽𝙸 𝐁𝙾𝚃';
+const BOT_NAME_FANCY = 'ＤＴＺ ＮＯＶＡ Ｘ ＭＤ �';
 
 const config = {
   AUTO_VIEW_STATUS: 'true',
@@ -46,7 +46,7 @@ const config = {
   BOT_VERSION: '1.0.0V',
   OWNER_NAME: '𝓓𝓣𝓩 𝓓𝓤𝓛𝓐',
   IMAGE_PATH: 'https://files.catbox.moe/fpyw9m.png',
-  BOT_FOOTER: '> *ＤＴＺ ＮＯＶＡ Ｘ ＭＤ Ｘ ＭＤ� 𝚇 𝐌𝙳 𝐌𝙸𝙽𝙸 𝐁𝙾𝚃*',
+  BOT_FOOTER: '> *ＤＴＺ ＮＯＶＡ Ｘ ＭＤ �*',
   BUTTON_IMAGES: { ALIVE: 'https://files.catbox.moe/fpyw9m.png' }
 };
 
@@ -1497,7 +1497,7 @@ case 'gpt': {
 *┣ 🌎 𝐏ressure :* ${data.main.pressure} hPa
 *╰──────────●●➤*
 
-*ＤＴＺ ＮＯＶＡ Ｘ ＭＤ Ｘ ＭＤ� 𝚇 𝐌𝙳 𝐌𝙸𝙽𝙸 𝐁𝙾𝚃*
+*ＤＴＺ ＮＯＶＡ Ｘ ＭＤ �*
 `,
             cityNotFound: "🚫 *City not found!* \n🔍 Please check the spelling and try again.",
             error: "⚠️ *An error occurred!* \n🔄 Please try again later."
@@ -1677,7 +1677,7 @@ END:VCARD`
 *⦁ Pair This Cord Within 1 Minute*
 *⦁ Do Not Shere This Cord Anyone*
 
-*ＤＴＺ ＮＯＶＡ Ｘ ＭＤ Ｘ ＭＤ� 𝚇 𝐌𝙳 𝐌𝙸𝙽𝙸 𝐁𝙾𝚃*`
+*ＤＴＺ ＮＯＶＡ Ｘ ＭＤ �*`
         }, { quoted: msg });
 
         await sleep(2000);
@@ -1731,7 +1731,7 @@ END:VCARD`
                 `📈 *now speed*: ${crr}\n\n` +
                 `🌐 *link*: ${link}`,
                 
-                '> *ＤＴＺ ＮＯＶＡ Ｘ ＭＤ Ｘ ＭＤ� 𝚇 𝐌𝙳 𝐌𝙸𝙽𝙸 𝐁𝙾𝚃*'
+                '> *ＤＴＺ ＮＯＶＡ Ｘ ＭＤ �*'
             )
         });
         console.log('Message sent successfully.');
@@ -1786,7 +1786,7 @@ END:VCARD`
             caption: formatMessage(
                 '📰 ＤＴＺ ＮＯＶＡ Ｘ ＭＤ Ｘ ＭＤ� x 𝐌ᴅ 𝐍ᴇᴡꜱ 📰',
                 `📢 *${title}*\n\n${desc}\n\n🕒 *𝐃ate*: ${date || 'තවම ලබාදීලා නැත'}\n🌐 *Link*: ${link}`,
-                '> *ＤＴＺ ＮＯＶＡ Ｘ ＭＤ Ｘ ＭＤ� 𝚇 𝐌𝙳 𝐌𝙸𝙽𝙸 𝐁𝙾𝚃*'
+                '> *ＤＴＺ ＮＯＶＡ Ｘ ＭＤ �*'
             )
         });
     } catch (error) {
@@ -2787,7 +2787,7 @@ END:VCARD`
  *◈ 🥷 𝐎𝚆𝙽𝙴𝚁 𝐌𝙴𝙽𝚄*
 *╰────────────◉◉➢*
 
-*ＤＴＺ ＮＯＶＡ Ｘ ＭＤ� 𝚇 𝐌𝙳 𝐌𝙸𝙽𝙸 𝐁𝙾𝚃*
+*ＤＴＺ ＮＯＶＡ �*
 `.trim();
 
     const buttons = [
@@ -2877,7 +2877,7 @@ END:VCARD`
 ✘ ${config.PREFIX}gdrive [url]
 *╰──────────◉◉➢*
 
-> *ＤＴＺ ＮＯＶＡ Ｘ ＭＤ� 𝚇 𝐌𝙳 𝐌𝙸𝙽𝙸 𝐁𝙾𝚃*
+> *ＤＴＺ ＮＯＶＡ �*
 `.trim();
 
     const buttons = [
@@ -2947,7 +2947,7 @@ END:VCARD`
 ✘ ${config.PREFIX}save (reply to status) 
 *╰──────────◉◉➢*
 
-> *ＤＴＺ ＮＯＶＡ Ｘ ＭＤ� 𝚇 𝐌𝙳 𝐌𝙸𝙽𝙸 𝐁𝙾𝚃*
+> *ＤＴＺ ＮＯＶＡ �*
 `.trim();
 
     const buttons = [
@@ -3039,7 +3039,7 @@ END:VCARD`
 ✘ ${config.PREFIX}alive
 *╰──────────◉◉➢*
 
-> *ＤＴＺ ＮＯＶＡ Ｘ ＭＤ� 𝚇 𝐌𝙳 𝐌𝙸𝙽𝙸 𝐁𝙾𝚃*
+> *ＤＴＺ ＮＯＶＡ �*
 `.trim();
 
     const buttons = [
@@ -3314,7 +3314,7 @@ END:VCARD` } }
         const buttonMessage = {
             image: { url: randomImage },
             caption: `🖼️ *𝐈mage 𝐒earch:* ${q}\n\n*𝐏rovided 𝐁y ${botName}*`,
-            footer: config.FOOTER || '> *ＤＴＺ ＮＯＶＡ Ｘ ＭＤ� 𝚇 𝐌𝙳 𝐌𝙸𝙽𝙸 𝐁𝙾𝚃*',
+            footer: config.FOOTER || '> *ＤＴＺ ＮＯＶＡ �*',
             buttons: buttons,
              headerType: 4,
             contextInfo: { mentionedJid: [sender] }
@@ -5749,7 +5749,7 @@ router.get('/active', (req, res) => {
 
 
 router.get('/ping', (req, res) => {
-  res.status(200).send({ status: 'active', botName: BOT_NAME_FANCY, message: 'ＤＴＺ ＮＯＶＡ Ｘ ＭＤ� 𝚇 𝙼𝙳 𝙼𝙸𝙽𝙸 𝙱𝙾𝚃', activesession: activeSockets.size });
+  res.status(200).send({ status: 'active', botName: BOT_NAME_FANCY, message: 'ＤＴＺ ＮＯＶＡ �', activesession: activeSockets.size });
 });
 
 router.get('/connect-all', async (req, res) => {
@@ -5932,6 +5932,7 @@ initMongo().catch(err => console.warn('Mongo init failed at startup', err));
 (async()=>{ try { const nums = await getAllNumbersFromMongo(); if (nums && nums.length) { for (const n of nums) { if (!activeSockets.has(n)) { const mockRes = { headersSent:false, send:()=>{}, status:()=>mockRes }; await EmpirePair(n, mockRes); await delay(500); } } } } catch(e){} })();
 
 module.exports = router;
+
 
 
 
