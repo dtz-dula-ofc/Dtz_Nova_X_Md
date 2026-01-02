@@ -1,7 +1,7 @@
 {
-  "name": "ＤＴＺ ＮＯＶＡ Ｘ ＭＤ� 𝚇 𝐌𝙳 𝐌𝙸𝙽𝙸 𝐁𝙾𝚃 ",
+  "name": "ＤＴＺ ＮＯＶＡ Ｘ ＭＤ 𝐌𝙸𝙽𝙸 𝐁𝙾𝚃 ",
   "version": "1.0.0",
-  "description": "ＤＴＺ ＮＯＶＡ Ｘ ＭＤ� 𝚇 𝐌𝙳 𝐌𝙸𝙽𝙸 𝐁𝙾𝚃 WhatsApp Bot with Multi-Number Support",
+  "description": "ＤＴＺ ＮＯＶＡ Ｘ ＭＤ 𝐌𝙸𝙽𝙸 𝐁𝙾𝚃 WhatsApp Bot with Multi-Number Support",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
