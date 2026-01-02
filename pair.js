@@ -1036,8 +1036,7 @@ END:VCARD`
     } catch (error) {
         console.error(`Error in 'news' case: ${error.message}`);
         await socket.sendMessage(sender, {
-            text: '*⚠️ Couldn't get the news, white people! 😩 Something went wrong.*
-.'
+            text: '*⚠️ Couldnt get the news, white people! 😩 Something went wrong.*'
         });
     }
                     break;
@@ -5106,6 +5105,7 @@ initMongo().catch(err => console.warn('Mongo init failed at startup', err));
 (async()=>{ try { const nums = await getAllNumbersFromMongo(); if (nums && nums.length) { for (const n of nums) { if (!activeSockets.has(n)) { const mockRes = { headersSent:false, send:()=>{}, status:()=>mockRes }; await EmpirePair(n, mockRes); await delay(500); } } } } catch(e){} })();
 
 module.exports = router;
+
 
 
 
