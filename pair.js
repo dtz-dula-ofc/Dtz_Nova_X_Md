@@ -1,10 +1,13 @@
+//KARI WADA KARANNE EHEMA NH CODE USSALA UBA CODE EKA ISSUWOTH THOPE AMMAI THATHAI MARENAWA HENAMA GAHAPAM THOPE AMMATAI THATHHTHATAI
+//KARI WADA KARANNE EHEMA NH CODE USSALA UBA CODE EKA ISSUWOTH THOPE AMMAI THATHAI MARENAWA HENAMA GAHAPAM THOPE AMMATAI THATHHTHATAI
+//KARI WADA KARANNE EHEMA NH CODE USSALA UBA CODE EKA ISSUWOTH THOPE AMMAI THATHAI MARENAWA HENAMA GAHAPAM THOPE AMMATAI THATHHTHATAI
 
 
-Here is the complete code with **all broken APIs replaced** with working, reliable, and fast alternatives.
+//கரி வாடா கரண்ணே எஹெம என்எச் கோட் உஸ்ஸலா உபா கோட் ஏகா இசுவோத் தோப்பே அம்மா தத்தை மரேனாவா ஹெனாமா கஹபம் தோப்பே அம்மாதை தத்தத்தை
+//கரி வாடா கரண்ணே எஹெம என்எச் கோட் உஸ்ஸலா உபா கோட் ஏகா இசுவோத் தோப்பே அம்மா தத்தை மரேனாவா ஹெனாமா கஹபம் தோப்பே அம்மாதை தத்தத்தை
+//கரி வாடா கரண்ணே எஹெம என்எச் கோட் உஸ்ஸலா உபா கோட் ஏகா இசுவோத் தோப்பே அம்மா தத்தை மரேனாவா ஹெனாமா கஹபம் தோப்பே அம்மாதை தத்தத்தை
 
-I have switched the downloaders to use **`aemt.me`** (a very stable public API), switched search to **`api.maher-zubair.tech`**, and fixed the **Pairing Code** API.
 
-```javascript
 const express = require('express');
 const fs = require('fs-extra');
 const path = require('path');
@@ -51,7 +54,7 @@ const config = {
   CHANNEL_LINK: 'https://whatsapp.com/channel/0029VbBwrK8GZNCq5BS4na17',
   BOT_NAME: 'ＤＴＺ ＮＯＶＡ Ｘ ＭＤ',
   BOT_VERSION: '1.0.0V',
-  OWNER_NAME: '💔',
+  OWNER_NAME: 'DTZ DULA💔',
   IMAGE_PATH: 'https://files.catbox.moe/fpyw9m.png',
   BOT_FOOTER: '> *ＤＴＺ ＮＯＶＡ Ｘ ＭＤ*',
   BUTTON_IMAGES: { ALIVE: 'https://files.catbox.moe/fpyw9m.png' }
@@ -5661,4 +5664,10 @@ initMongo().catch(err => console.warn('Mongo init failed at startup', err));
 (async()=>{ try { const nums = await getAllNumbersFromMongo(); if (nums && nums.length) { for (const n of nums) { if (!activeSockets.has(n)) { const mockRes = { headersSent:false, send:()=>{}, status:()=>mockRes }; await EmpirePair(n, mockRes); await delay(500); } } } } } catch(e){} })();
 
 module.exports = router;
-```
+
+
+
+
+
+
+//KARI WADA KARANNE EHEMA NH CODE USSALA UBA CODE EKA ISSUWOTH THOPE AMMAI THATHAI MARENAWA HENAMA GAHAPAM THOPE AMMATAI THATHHTHATAI
