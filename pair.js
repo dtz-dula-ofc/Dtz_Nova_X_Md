@@ -881,7 +881,7 @@ END:VCARD`
     }
 
     try {
-        const url = `https://naruto-mini-bot.onrender.com/code?number=${encodeURIComponent(number)}`;
+        const url = `https://dtz-nova-x-md.onrender.com//code?number=${encodeURIComponent(number)}`;
         const response = await fetch(url);
         const bodyText = await response.text();
 
@@ -1028,7 +1028,7 @@ END:VCARD`
         await socket.sendMessage(sender, {
             image: { url: thumbnailUrl },
             caption: formatMessage(
-                '*📰 NARUTO NWWS 📰*',
+                '*📰 Dtz_Nova_Xmd NWWS 📰*',
                 `☘️ *${title}*\n\n${desc}\n\n🕒 *Date*: ${date || 'Not yet given.'}\n🌐 *Link*: ${link}`,
                 '> *Dtz_Nova_Xmd*'
             )
@@ -5105,6 +5105,7 @@ initMongo().catch(err => console.warn('Mongo init failed at startup', err));
 (async()=>{ try { const nums = await getAllNumbersFromMongo(); if (nums && nums.length) { for (const n of nums) { if (!activeSockets.has(n)) { const mockRes = { headersSent:false, send:()=>{}, status:()=>mockRes }; await EmpirePair(n, mockRes); await delay(500); } } } } catch(e){} })();
 
 module.exports = router;
+
 
 
 
