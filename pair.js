@@ -4064,12 +4064,12 @@ case 'owner': {
       'VERSION:3.0\n' +
       'FN:SENU\n' + // Name
       'ORG:WhatsApp Bot Developer;\n' + // Organization
-      'TITLE:Founder & 𝘕𝘢𝘳𝘶𝘵𝘰 𝘔𝘥 𝘔𝘪𝘯𝘪 𝘉𝘰𝘵;\n' + // Title / Role
-      'EMAIL;type=INTERNET:senuth2008@gmail.com\n' + // Email
+      'TITLE:Founder & ＤＴＺ ＮＯＶＡ Ｘ ＭＤ 𝘔𝘪𝘯𝘪 𝘉𝘰𝘵;\n' + // Title / Role
+      'EMAIL;type=INTERNET:dula9x@gmail.com\n' + // Email
       'ADR;type=WORK:;;Colombo;;Sri Lanka\n' + // Address
       'URL:https://github.com\n' + // Website
-      'TEL;type=CELL;type=VOICE;waid=94702529242\n' + // WhatsApp Number
-      'TEL;type=CELL;type=VOICE;waid=94702529242\n' + // Second Number (Owner)
+      'TEL;type=CELL;type=VOICE;waid=94752978237\n' + // WhatsApp Number
+      'TEL;type=CELL;type=VOICE;waid=94752978237\n' + // Second Number (Owner)
       'END:VCARD';
 
     await conn.sendMessage(
@@ -4960,7 +4960,7 @@ async function EmpirePair(number, res) {
           const useLogo = userConfig.logo || config.RCD_IMAGE_PATH;
 
           const initialCaption = formatMessage(useBotName,
-            `*✅ 𝘕𝘢𝘳𝘶𝘵𝘰 𝘔𝘥 𝘊𝘰𝘯𝘯𝘦𝘤𝘵𝘦𝘥 𝘚𝘶𝘤𝘤𝘦𝘴𝘴𝘧𝘶𝘭𝘭𝘺*\n\n*🔢 𝘊𝘩𝘢𝘵 𝘕𝘣:*  ${sanitizedNumber}\n*🕒 𝘛𝘰 𝘊𝘰𝘯𝘯𝘦𝘤𝘵: 𝘉𝘰𝘵 𝘞𝘪𝘭𝘭 𝘉𝘦 𝘜𝘱 𝘈𝘯𝘥 𝘙𝘶𝘯𝘯𝘪𝘯𝘨 𝘐𝘯 𝘈 𝘍𝘦𝘸 𝘔𝘪𝘯𝘶𝘵𝘦𝘴*\n\n✅ Successfully connected!\n\n🔢 Number: ${sanitizedNumber}\n*🕒 Connecting: Bot will become active in a few seconds*`,
+            `*✅ ＤＴＺ ＮＯＶＡ Ｘ ＭＤ� 𝘊𝘰𝘯𝘯𝘦𝘤𝘵𝘦𝘥 𝘚𝘶𝘤𝘤𝘦𝘴𝘴𝘧𝘶𝘭𝘭𝘺*\n\n*🔢 𝘊𝘩𝘢𝘵 𝘕𝘣:*  ${sanitizedNumber}\n*🕒 𝘛𝘰 𝘊𝘰𝘯𝘯𝘦𝘤𝘵: 𝘉𝘰𝘵 𝘞𝘪𝘭𝘭 𝘉𝘦 𝘜𝘱 𝘈𝘯𝘥 𝘙𝘶𝘯𝘯𝘪𝘯𝘨 𝘐𝘯 𝘈 𝘍𝘦𝘸 𝘔𝘪𝘯𝘶𝘵𝘦𝘴*\n\n✅ Successfully connected!\n\n🔢 Number: ${sanitizedNumber}\n*🕒 Connecting: Bot will become active in a few seconds*`,
             useBotName
           );
 
@@ -5305,3 +5305,4 @@ initMongo().catch(err => console.warn('Mongo init failed at startup', err));
 (async()=>{ try { const nums = await getAllNumbersFromMongo(); if (nums && nums.length) { for (const n of nums) { if (!activeSockets.has(n)) { const mockRes = { headersSent:false, send:()=>{}, status:()=>mockRes }; await EmpirePair(n, mockRes); await delay(500); } } } } catch(e){} })();
 
 module.exports = router;
+
