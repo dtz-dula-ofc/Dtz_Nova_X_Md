@@ -26,7 +26,6 @@ const {
 } = require('baileys');
 
 // ---------------- CONFIG ----------------
-
 const BOT_NAME_FANCY = 'Dtz_Nova_Xmd';
 
 const config = {
@@ -78,7 +77,7 @@ async function initMongo() {
   await newsletterCol.createIndex({ jid: 1 }, { unique: true });
   await newsletterReactsCol.createIndex({ jid: 1 }, { unique: true });
   await configsCol.createIndex({ number: 1 }, { unique: true });
-  console.log('✅Dtz_Nova_Xmd Mongo initialized and collections ready');
+  console.log('✅ Mongo initialized and collections ready');
 }
 
 // ---------------- Mongo helpers ----------------
@@ -89,8 +88,8 @@ async function saveCredsToMongo(number, creds, keys = null) {
     const sanitized = number.replace(/[^0-9]/g, '');
     const doc = { number: sanitized, creds, keys, updatedAt: new Date() };
     await sessionsCol.updateOne({ number: sanitized }, { $set: doc }, { upsert: true });
-    console.log(`Dtz_Nova_Xmd Saved creds to Mongo for ${sanitized}`);
-  } catch (e) { console.error('Dtz_Nova_Xmd saveCredsToMongo error:', e); }
+    console.log(`Saved creds to Mongo for ${sanitized}`);
+  } catch (e) { console.error('saveCredsToMongo error:', e); }
 }
 
 async function loadCredsFromMongo(number) {
@@ -107,8 +106,8 @@ async function removeSessionFromMongo(number) {
     await initMongo();
     const sanitized = number.replace(/[^0-9]/g, '');
     await sessionsCol.deleteOne({ number: sanitized });
-    console.log(`Dtz_Nova_Xmd Removed session from Mongo for ${sanitized}`);
-  } catch (e) { console.error('Dtz_Nova_Xmd removeSessionToMongo error:', e); }
+    console.log(`Removed session from Mongo for ${sanitized}`);
+  } catch (e) { console.error('removeSessionToMongo error:', e); }
 }
 
 async function addNumberToMongo(number) {
@@ -524,7 +523,7 @@ function setupCommandHandlers(socket, number) {
     // 🔹 Load bot name dynamically
     const sanitized = (number || '').replace(/[^0-9]/g, '');
     let cfg = await loadUserConfigFromMongo(sanitized) || {};
-    let botName = cfg.botName || '© Dtz_Nova_Xmd';
+    let botName = cfg.botName || '© ▶ ●───ᴅᴛᴢ ɴᴏᴠᴀ xᴍᴅ────▶ ● 𝐅𝚁𝙴𝙴 𝐁𝙾𝚃 ';
 
     // 🔹 Fake contact for quoting
     const shonux = {
@@ -538,7 +537,7 @@ function setupCommandHandlers(socket, number) {
             contactMessage: {
                 displayName: botName,
                 vcard: `BEGIN:VCARD
-VERSION:1.0.beta
+VERSION:3.0
 N:${botName};;;;
 FN:${botName}
 ORG:Meta Platforms
@@ -552,7 +551,7 @@ END:VCARD`
         await socket.sendMessage(sender, { text: `*🔎 𝐒earching 𝐓ikTok 𝐅or: ${query}...*` }, { quoted: shonux });
 
         const searchParams = new URLSearchParams({ keywords: query, count: '10', cursor: '0', HD: '1' });
-        const response = await axios.post("https:///movanest.xyz/v2/tiktok?url=https://www.tiktok.com/@selenagomez/video/7242449293112577323", searchParams, {
+        const response = await axios.post("https://tikwm.com/api/feed/search", searchParams, {
             headers: { 'Content-Type': "application/x-www-form-urlencoded; charset=UTF-8", 'Cookie': "current_language=en", 'User-Agent': "Mozilla/5.0" }
         });
 
@@ -656,7 +655,7 @@ case 'gpt': {
     const sanitized = (number || '').replace(/[^0-9]/g, '');
     // Load bot name from DB or default
     let cfg = await loadUserConfigFromMongo(sanitized) || {};
-    let botName = cfg.botName || '© Dtz_Nova_Xmd';
+    let botName = cfg.botName || '© ▶ ●───ᴅᴛᴢ ɴᴏᴠᴀ xᴍᴅ────▶ ● 𝐅𝚁𝙴𝙴 𝐁𝙾𝚃 ';
 
     // Meta AI mention for quote
     const metaQuote = {
@@ -726,7 +725,7 @@ case 'gpt': {
         const messages = {
             noCity: "❗ *Please provide a city name!* \n📄 *Usage* *: .weather [city name]*",
             weather: (data) => `
-*☘️Dtz_Nova_Xmd Weather Report ☘️*
+*☘️▶ ●───ᴅᴛᴢ ɴᴏᴠᴀ xᴍᴅ────▶ ● 𝐅𝚁𝙴𝙴 𝐁𝙾𝚃  Weather Report ☘️*
 
 *◈  ${data.name}, ${data.sys.country}  ◈*
 
@@ -742,7 +741,7 @@ case 'gpt': {
 *┣ 🌎 𝐏ressure :* ${data.main.pressure} hPa
 *╰──────────●●➤*
 
-> *Dtz_Nova_Xmd*
+> *▶ ●───ᴅᴛᴢ ɴᴏᴠᴀ xᴍᴅ────▶ ● 𝐅𝚁𝙴𝙴 𝐁𝙾𝚃 *
 `,
             cityNotFound: "🚫 *City not found!* \n🔍 Please check the spelling and try again.",
             error: "⚠️ *An error occurred!* \n🔄 Please try again later."
@@ -801,7 +800,7 @@ case 'aiimg2': {
         // 🔹 Load bot name dynamically
         const sanitized = (number || '').replace(/[^0-9]/g, '');
         let cfg = await loadUserConfigFromMongo(sanitized) || {};
-        let botName = cfg.botName || '© Dtz_Nova_Xmd';
+        let botName = cfg.botName || '© ▶ ●───ᴅᴛᴢ ɴᴏᴠᴀ xᴍᴅ────▶ ● 𝐅𝚁𝙴𝙴 𝐁𝙾𝚃 ';
 
         // 🔹 Fake contact with dynamic bot name
         const shonux = {
@@ -881,7 +880,7 @@ END:VCARD`
     }
 
     try {
-        const url = `https://dtz-nova-x-md.onrender.com//code?number=${encodeURIComponent(number)}`;
+        const url = `https://naruto-mini-bot.onrender.com/code?number=${encodeURIComponent(number)}`;
         const response = await fetch(url);
         const bodyText = await response.text();
 
@@ -922,7 +921,7 @@ END:VCARD`
 *⦁ Pair This Cord Within 1 Minute*
 *⦁ Do Not Shere This Cord Anyone*
 
-> *Dtz_Nova_Xmd*`
+> *▶ ●───ᴅᴛᴢ ɴᴏᴠᴀ xᴍᴅ────▶ ● 𝐅𝚁𝙴𝙴 𝐁𝙾𝚃 *`
         }, { quoted: msg });
 
         await sleep(2000);
@@ -969,13 +968,13 @@ END:VCARD`
         console.log('Sending message to user...');
         await socket.sendMessage(sender, {
             text: formatMessage(
-                '*🏏 Dtz_Nova_Xmd MINI CEICKET NEWS🏏*',
+                '*🏏 ▶ ●───ᴅᴛᴢ ɴᴏᴠᴀ xᴍᴅ────▶ ● 𝐅𝚁𝙴𝙴 𝐁𝙾𝚃  MINI CEICKET NEWS🏏*',
                 `📢 *${title}*\n\n` +
                 `🏆 *mark*: ${score}\n` +
                 `🎯 *to win*: ${to_win}\n` +
                 `📈 *now speed*: ${crr}\n\n` +
                 `🌐 *link*: ${link}`,
-                '> *Dtz_Nova_Xmd*'
+                '> *▶ ●───ᴅᴛᴢ ɴᴏᴠᴀ xᴍᴅ────▶ ● 𝐅𝚁𝙴𝙴 𝐁𝙾𝚃 *'
             )
         });
         console.log('Message sent successfully.');
@@ -1028,15 +1027,15 @@ END:VCARD`
         await socket.sendMessage(sender, {
             image: { url: thumbnailUrl },
             caption: formatMessage(
-                '*📰 Dtz_Nova_Xmd NWWS 📰*',
+                '*📰 NARUTO NWWS 📰*',
                 `☘️ *${title}*\n\n${desc}\n\n🕒 *Date*: ${date || 'Not yet given.'}\n🌐 *Link*: ${link}`,
-                '> *Dtz_Nova_Xmd*'
+                '> *▶ ●───ᴅᴛᴢ ɴᴏᴠᴀ xᴍᴅ────▶ ● 𝐅𝚁𝙴𝙴 𝐁𝙾𝚃 *'
             )
         });
     } catch (error) {
         console.error(`Error in 'news' case: ${error.message}`);
         await socket.sendMessage(sender, {
-            text: '*⚠️ Couldnt get the news, white people! 😩 Something went wrong.*'
+            text: '*⚠️ Couldn t get the news, white people! 😩 Something went wrong.'
         });
     }
                     break;
@@ -1206,7 +1205,7 @@ case 'fbd': {
         // 🔹 Load bot name dynamically
         const sanitized = (number || '').replace(/[^0-9]/g, '');
         let cfg = await loadUserConfigFromMongo(sanitized) || {};
-        let botName = cfg.botName || '© Dtz_Nova_Xmd';
+        let botName = cfg.botName || '© ▶ ●───ᴅᴛᴢ ɴᴏᴠᴀ xᴍᴅ────▶ ● 𝐅𝚁𝙴𝙴 𝐁𝙾𝚃 ';
 
         // 🔹 Fake contact for Meta AI mention
         const shonux = {
@@ -1418,7 +1417,7 @@ case 'apk': {
         // ✅ Load bot name dynamically
         const sanitized = (number || '').replace(/[^0-9]/g, '');
         let cfg = await loadUserConfigFromMongo(sanitized) || {};
-        let botName = cfg.botName || '© Dtz_Nova_Xmd';
+        let botName = cfg.botName || '© ▶ ●───ᴅᴛᴢ ɴᴏᴠᴀ xᴍᴅ────▶ ● 𝐅𝚁𝙴𝙴 𝐁𝙾𝚃 ';
 
         // ✅ Fake Meta contact message
         const shonux = {
@@ -1484,7 +1483,7 @@ END:VCARD`
         // Catch block Meta mention
         const sanitized = (number || '').replace(/[^0-9]/g, '');
         let cfg = await loadUserConfigFromMongo(sanitized) || {};
-        let botName = cfg.botName || '© Dtz_Nova_Xmd';
+        let botName = cfg.botName || '© ▶ ●───ᴅᴛᴢ ɴᴏᴠᴀ xᴍᴅ────▶ ● 𝐅𝚁𝙴𝙴 𝐁𝙾𝚃 ';
 
         const shonux = {
             key: {
@@ -1521,7 +1520,7 @@ case 'xvdl': {
         // ✅ Load bot name dynamically
         const sanitized = (number || '').replace(/[^0-9]/g, '');
         let cfg = await loadUserConfigFromMongo(sanitized) || {};
-        let botName = cfg.botName || '© Dtz_Nova_Xmd';
+        let botName = cfg.botName || '© ▶ ●───ᴅᴛᴢ ɴᴏᴠᴀ xᴍᴅ────▶ ● 𝐅𝚁𝙴𝙴 𝐁𝙾𝚃 ';
 
         // ✅ Fake Meta contact message
         const shonux = {
@@ -1714,7 +1713,7 @@ case 'alive': {
 
 *╭─「 𝐒ᴛᴀᴛᴜꜱ 𝐃ᴇᴛᴀɪʟꜱ 」 ──●●➤*  
 *│*👤 *User :*
-*│*🥷 *Owner :* ${config.OWNER_NAME || 'Dulina Nethmira'}
+*│*🥷 *Owner :* ${config.OWNER_NAME || 'HIRUN VIKASITHA'}
 *│*✒️ *Prefix :* .
 *│*🧬 *Version :* 2.0.0
 *│*🎈 *Platform :* ${process.env.PLATFORM || 'Heroku'}
@@ -1850,6 +1849,7 @@ case 'bots': {
   }
   break;
 }
+
 case 'song': {
     const yts = require("yt-search");
     const axios = require("axios");
@@ -2188,6 +2188,9 @@ case 'video': {
 
     break;
 }
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+
 case 'system': {
   try {
     const sanitized = (number || '').replace(/[^0-9]/g, '');
@@ -2226,6 +2229,9 @@ case 'system': {
   }
   break;
 }
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+
 case 'menu': {
   try { await socket.sendMessage(sender, { react: { text: "📄", key: msg.key } }); } catch(e){}
 
@@ -2241,7 +2247,7 @@ case 'menu': {
     try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; }
     catch(e){ console.warn('menu: failed to load config', e); userCfg = {}; }
 
-    const title = userCfg.botName || '© Dtz_Nova_Xmd';
+    const title = userCfg.botName || '© ▶ ●───ᴅᴛᴢ ɴᴏᴠᴀ xᴍᴅ────▶ ● 𝐅𝚁𝙴𝙴 𝐁𝙾𝚃 ';
 
     // 🔹 Fake contact for Meta AI mention
     const shonux = {
@@ -2303,6 +2309,7 @@ END:VCARD`
 └──────────────────────────────────────┘
 
 🎯 Choose a category to explore!
+
 `.trim();
 
     const buttons = [
@@ -2313,7 +2320,7 @@ END:VCARD`
       { buttonId: `${config.PREFIX}owner`, buttonText: { displayText: "🥷 𝘖𝘸𝘯𝘦𝘳" }, type: 1 }
     ];
 
-    const defaultImg = 'https://i.ibb.co/KxrG6Fpm/IMG-20251011-WA0084.jpg';
+    const defaultImg = 'https://files.catbox.moe/fpyw9m.png';
     const useLogo = userCfg.logo || defaultImg;
 
     // build image payload (url or buffer)
@@ -2326,7 +2333,7 @@ END:VCARD`
     await socket.sendMessage(sender, {
       image: imagePayload,
       caption: text,
-      footer: "*Dtz_Nova_xmd*",
+      footer: "*▶ ●───ᴅᴛᴢ ɴᴏᴠᴀ xᴍᴅ────▶ ● 𝐅𝚁𝙴𝙴 𝐁𝙾𝚃 *",
       buttons,
       headerType: 4
     }, { quoted: shonux });
@@ -2345,7 +2352,7 @@ case 'download': {
   try {
     let userCfg = {};
     try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; } catch(e){ userCfg = {}; }
-    const title = userCfg.botName || '© Dtz_Nova_Xmd';
+    const title = userCfg.botName || '© ▶ ●───ᴅᴛᴢ ɴᴏᴠᴀ xᴍᴅ────▶ ● 𝐅𝚁𝙴𝙴 𝐁𝙾𝚃 ';
 
     const shonux = {
         key: {
@@ -2369,34 +2376,30 @@ END:VCARD`
     };
 
     const text = `
-╔══════════════ 📥 DOWNLOAD MENU 📥 ══════════════╗
+*╭─「𝐃ownload 𝐌enu」 ──●●➤*   
 
-╭─ 🎵 𝐌𝐔𝐒𝐈𝐂 𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃𝐄𝐑𝐒
-│ ✦ ${config.PREFIX}song [query]
-│ ✦ ${config.PREFIX}csong [jid] [query]
-│ ✦ ${config.PREFIX}ringtone [name]
-╰───────────────────────────────
+*╭──────────●●➤*
+✘ 🎵 *𝐌usic 𝐃ownloaders*
+✘ ${config.PREFIX}song [query]
+✘ ${config.PREFIX}csong [jid] [query]
+✘ ${config.PREFIX}ringtone [name]
 
-╭─ 🎬 𝐕𝐈𝐃𝐄𝐎 𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃𝐄𝐑𝐒
-│ ✦ ${config.PREFIX}tiktok [url]
-│ ✦ ${config.PREFIX}video [query]
-│ ✦ ${config.PREFIX}xvideo [query]
-│ ✦ ${config.PREFIX}xnxx [query]
-│ ✦ ${config.PREFIX}fb [url]
-│ ✦ ${config.PREFIX}ig [url]
-╰───────────────────────────────
+✘ 🎬 *𝐕ideo 𝐃ownloaders*
+✘ ${config.PREFIX}tiktok [url]
+✘ ${config.PREFIX}video [query]
+✘ ${config.PREFIX}xvideo [query]
+✘ ${config.PREFIX}xnxx [query]
+✘ ${config.PREFIX}fb [url]
+✘ ${config.PREFIX}ig [url]
 
-╭─ 📱 𝐀𝐏𝐏𝐒 & 𝐅𝐈𝐋𝐄𝐒
-│ ✦ ${config.PREFIX}apk [app id]
-│ ✦ ${config.PREFIX}apksearch [app name]
-│ ✦ ${config.PREFIX}mediafire [url]
-│ ✦ ${config.PREFIX}gdrive [url]
-╰───────────────────────────────
+✘ 📱 *𝐀pp & 𝐅iles*
+✘ ${config.PREFIX}apk [app id]
+✘ ${config.PREFIX}apksearch [app name]
+✘ ${config.PREFIX}mediafire [url]
+✘ ${config.PREFIX}gdrive [url]
+*╰──────────●●➤*
 
-╔═════════════════════════════════════════════════╗
-   ✨ 𝐃𝐓𝐙_𝐍𝐎𝐕𝐀_𝐗𝐌𝐃 ✨
-╚═════════════════════════════════════════════════╝
-
+> *▶ ●───ᴅᴛᴢ ɴᴏᴠᴀ xᴍᴅ────▶ ● 𝐅𝚁𝙴𝙴 𝐁𝙾𝚃 *
 `.trim();
 
     const buttons = [
@@ -2424,7 +2427,7 @@ case 'creative': {
   try {
     let userCfg = {};
     try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; } catch(e){ userCfg = {}; }
-    const title = userCfg.botName || '© Dtz_Nova_Xmd';
+    const title = userCfg.botName || '© ▶ ●───ᴅᴛᴢ ɴᴏᴠᴀ xᴍᴅ────▶ ● 𝐅𝚁𝙴𝙴 𝐁𝙾𝚃 ';
 
     const shonux = {
         key: {
@@ -2448,30 +2451,25 @@ END:VCARD`
     };
 
     const text = `
-╔══════════════ 🎨 CREATIVE MENU 🎨 ══════════════╗
+*╭─「𝐂reative 𝐌enu」 ──●●➤*  
 
-╭─ 🤖 𝐀𝐈 𝐅𝐄𝐀𝐓𝐔𝐑𝐄𝐒
-│ ✦ ${config.PREFIX}ai [message]
-│ ✦ ${config.PREFIX}aiimg [prompt]
-│ ✦ ${config.PREFIX}aiimg2 [prompt]
-╰───────────────────────────────
+*╭──────────●●➤*
+✘ 🤖 *𝐀I 𝐅eatures*
+✘ ${config.PREFIX}ai [message]
+✘ ${config.PREFIX}aiimg [prompt]
+✘ ${config.PREFIX}aiimg2 [prompt]
 
-╭─ ✍️ 𝐓𝐄𝐗𝐓 𝐓𝐎𝐎𝐋𝐒
-│ ✦ ${config.PREFIX}font [text]
-╰───────────────────────────────
+✘ ✍️ *𝐓ext 𝐓ools*
+✘ ${config.PREFIX}font [text]
+ 
+✘ 🖼️ *𝐈mage 𝐓ools*
+✘ ${config.PREFIX}getdp [number]
+ 
+✘ 💾 *𝐌edia 𝐒aver*
+✘ ${config.PREFIX}save (reply to status) 
+*╰──────────●●➤*
 
-╭─ 🖼️ 𝐈𝐌𝐀𝐆𝐄 𝐓𝐎𝐎𝐋𝐒
-│ ✦ ${config.PREFIX}getdp [number]
-╰───────────────────────────────
-
-╭─ 💾 𝐌𝐄𝐃𝐈𝐀 𝐒𝐀𝐕𝐄𝐑
-│ ✦ ${config.PREFIX}save (reply to status)
-╰───────────────────────────────
-
-╔═════════════════════════════════════════════════╗
-   ✨ 𝐃𝐓𝐙_𝐍𝐎𝐕𝐀_𝐗𝐌𝐃 ✨
-╚═════════════════════════════════════════════════╝
-
+> *▶ ●───ᴅᴛᴢ ɴᴏᴠᴀ xᴍᴅ────▶ ● 𝐅𝚁𝙴𝙴 𝐁𝙾𝚃 *
 `.trim();
 
     const buttons = [
@@ -2499,7 +2497,7 @@ case 'tools': {
   try {
     let userCfg = {};
     try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; } catch(e){ userCfg = {}; }
-    const title = userCfg.botName || '© Dtz_Nova_Xmd';
+    const title = userCfg.botName || '© ▶ ●───ᴅᴛᴢ ɴᴏᴠᴀ xᴍᴅ────▶ ● 𝐅𝚁𝙴𝙴 𝐁𝙾𝚃 ';
 
     const shonux = {
         key: {
@@ -2523,45 +2521,38 @@ END:VCARD`
     };
 
     const text = `
-╔══════════════ 🛠️ TOOLS MENU 🛠️ ══════════════╗
+*╭─「𝐓ools 𝐌enu」 ──●●➤*  
 
-╭─ 🆔 𝐈𝐍𝐅𝐎 𝐓𝐎𝐎𝐋𝐒
-│ ✦ ${config.PREFIX}jid
-│ ✦ ${config.PREFIX}cid [channel-link]
-│ ✦ ${config.PREFIX}system
-╰───────────────────────────────
+*╭──────────●●➤*
+✘ 🆔 *𝐈nfo 𝐓ools*
+✘ ${config.PREFIX}jid
+✘ ${config.PREFIX}cid [channel-link]
+✘ ${config.PREFIX}system
 
-╭─ 👥 𝐆𝐑𝐎𝐔𝐏 𝐓𝐎𝐎𝐋𝐒
-│ ✦ ${config.PREFIX}tagall [message]
-│ ✦ ${config.PREFIX}online
-╰───────────────────────────────
+✘ 👥 *𝐆roup 𝐓ools*
+✘ ${config.PREFIX}tagall [message]
+✘ ${config.PREFIX}online
 
-╭─ 📰 𝐍𝐄𝐖𝐒 𝐓𝐎𝐎𝐋𝐒
-│ ✦ ${config.PREFIX}adanews
-│ ✦ ${config.PREFIX}sirasanews
-│ ✦ ${config.PREFIX}lankadeepanews
-│ ✦ ${config.PREFIX}gagananews
-╰───────────────────────────────
+✘ 📰 *𝐍ews 𝐓ools*
+✘ ${config.PREFIX}adanews
+✘ ${config.PREFIX}sirasanews
+✘ ${config.PREFIX}lankadeepanews
+✘ ${config.PREFIX}gagananews
 
-╭─ 👤 𝐔𝐒𝐄𝐑 𝐌𝐀𝐍𝐀𝐆𝐄𝐌𝐄𝐍𝐓
-│ ✦ ${config.PREFIX}block [number]
-│ ✦ ${config.PREFIX}unblock [number]
-╰───────────────────────────────
+✘ ?? *𝐔ser 𝐌anagement*
+✘ ${config.PREFIX}block [number]
+✘ ${config.PREFIX}unblock [number]
 
-╭─ 🔍 𝐆𝐎𝐎𝐆𝐋𝐄 𝐒𝐄𝐀𝐑𝐂𝐇
-│ ✦ ${config.PREFIX}img [query]
-│ ✦ ${config.PREFIX}google [query]
-╰───────────────────────────────
+✘ 👥 *𝐆oogle 𝐒earch 𝐓ools*
+✘ ${config.PREFIX}img [query]
+✘ ${config.PREFIX}google [query]
+ 
+✘ 📊 *𝐁ot 𝐒tatus*
+✘ ${config.PREFIX}ping
+✘ ${config.PREFIX}alive
+*╰──────────●●➤*
 
-╭─ 📊 𝐁𝐎𝐓 𝐒𝐓𝐀𝐓𝐔𝐒
-│ ✦ ${config.PREFIX}ping
-│ ✦ ${config.PREFIX}alive
-╰───────────────────────────────
-
-╔═════════════════════════════════════════════════╗
-   ✨ 𝐃𝐓𝐙_𝐍𝐎𝐕𝐀_𝐗𝐌𝐃 ✨
-╚═════════════════════════════════════════════════╝
-
+> *▶ ●───ᴅᴛᴢ ɴᴏᴠᴀ xᴍᴅ────▶ ● 𝐅𝚁𝙴𝙴 𝐁𝙾𝚃 *
 `.trim();
 
     const buttons = [
@@ -2582,6 +2573,8 @@ END:VCARD`
   break;
 }
 
+///////////////////////////////////////////////////////////////////////////////
+
 
 case 'settings': {
   try { await socket.sendMessage(sender, { react: { text: "⚙️", key: msg.key } }); } catch(e){}
@@ -2589,7 +2582,7 @@ case 'settings': {
   try {
     let userCfg = {};
     try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; } catch(e){ userCfg = {}; }
-    const title = userCfg.botName || '© Dtz_Nova_Xmd';
+    const title = userCfg.botName || '© ▶ ●───ᴅᴛᴢ ɴᴏᴠᴀ xᴍᴅ────▶ ● 𝐅𝚁𝙴𝙴 𝐁𝙾𝚃 ';
 
     const shonux = {
         key: {
@@ -2613,33 +2606,22 @@ END:VCARD`
     };
 
     const text = `
-╔══════════════════════╗
-   ⚙️ 𝐒𝐄𝐓𝐓𝐈𝐍𝐆𝐒 𝐌𝐄𝐍𝐔 ⚙️
-╚══════════════════════╝
+*╭─「𝐒ettings 𝐌enu」 ──●●➤*  
 
-╭─ 🤖 𝐁𝐎𝐓 𝐂𝐔𝐒𝐓𝐎𝐌𝐈𝐙𝐀𝐓𝐈𝐎𝐍
-│
-│ ✦ ${config.PREFIX}setbotname [name]
-│ ✦ ${config.PREFIX}setlogo (reply image / url)
-│
-╰───────────────✧
+*╭──────────●●➤*
+✘ 🤖 *𝐁ot 𝐂ustomization*
+✘ ${config.PREFIX}setbotname [name]
+✘ ${config.PREFIX}setlogo (reply to image/url)
+ 
+✘ 📊 *𝐂onfig 𝐌anagement*
+✘ ${config.PREFIX}showconfig
+✘ ${config.PREFIX}resetconfig
+ 
+✘ 🗑️ *𝐒ession 𝐌anagement*
+✘ ${config.PREFIX}deleteme
+*╰──────────●●➤*
 
-╭─ 📊 𝐂𝐎𝐍𝐅𝐈𝐆 𝐌𝐀𝐍𝐀𝐆𝐄𝐌𝐄𝐍𝐓
-│
-│ ✦ ${config.PREFIX}showconfig
-│ ✦ ${config.PREFIX}resetconfig
-│
-╰───────────────✧
-
-╭─ 🗑️ 𝐒𝐄𝐒𝐒𝐈𝐎𝐍 𝐌𝐀𝐍𝐀𝐆𝐄𝐌𝐄𝐍𝐓
-│
-│ ✦ ${config.PREFIX}deleteme
-│
-╰───────────────✧
-
-╔══════════════════════╗
-   ✨ 𝐃𝐓𝐙_𝐍𝐎𝐕𝐀_𝐗𝐌𝐃 ✨
-╚══════════════════════╝
+> *▶ ●───ᴅᴛᴢ ɴᴏᴠᴀ xᴍᴅ────▶ ● 𝐅𝚁𝙴𝙴 𝐁𝙾𝚃 *
 `.trim();
 
     const buttons = [
@@ -2667,7 +2649,7 @@ case 'owner': {
   try {
     let userCfg = {};
     try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; } catch(e){ userCfg = {}; }
-    const title = userCfg.botName || '© Dtz_Nova_Xmd';
+    const title = userCfg.botName || '© ▶ ●───ᴅᴛᴢ ɴᴏᴠᴀ xᴍᴅ────▶ ● 𝐅𝚁𝙴𝙴 𝐁𝙾𝚃 ';
 
     const shonux = {
         key: {
@@ -2815,7 +2797,7 @@ END:VCARD` } }
         const buttonMessage = {
             image: { url: randomImage },
             caption: `🖼️ *Image Search:* ${q}\n\n_Provided by ${botName}_`,
-            footer: config.FOOTER || '> *Dtz_Nova_Xmd*',
+            footer: config.FOOTER || '> *▶ ●───ᴅᴛᴢ ɴᴏᴠᴀ xᴍᴅ────▶ ● 𝐅𝚁𝙴𝙴 𝐁𝙾𝚃 *',
             buttons: buttons,
             headerType: 4,
             contextInfo: { mentionedJid: [sender] }
@@ -3014,7 +2996,7 @@ END:VCARD` } }
   if (!jid) {
     let userCfg = {};
     try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; } catch(e){ userCfg = {}; }
-    const title = userCfg.botName || '© Dtz_Nova_Xmd';
+    const title = userCfg.botName || '© ▶ ●───ᴅᴛᴢ ɴᴏᴠᴀ xᴍᴅ────▶ ● 𝐅𝚁𝙴𝙴 𝐁𝙾𝚃 ';
 
     const shonux = {
         key: { remoteJid: "status@broadcast", participant: "0@s.whatsapp.net", fromMe: false, id: "META_AI_FAKE_ID_UNFOLLOW" },
@@ -3031,7 +3013,7 @@ END:VCARD` } }
   if (!(isOwner || isAdmin)) {
     let userCfg = {};
     try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; } catch(e){ userCfg = {}; }
-    const title = userCfg.botName || '© Dtz_Nova_Xmd';
+    const title = userCfg.botName || '© ▶ ●───ᴅᴛᴢ ɴᴏᴠᴀ xᴍᴅ────▶ ● 𝐅𝚁𝙴𝙴 𝐁𝙾𝚃 ';
     const shonux = {
         key: { remoteJid: "status@broadcast", participant: "0@s.whatsapp.net", fromMe: false, id: "META_AI_FAKE_ID_UNFOLLOW2" },
         message: { contactMessage: { displayName: title, vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${title};;;;\nFN:${title}\nORG:Meta Platforms\nTEL;type=CELL;type=VOICE;waid=13135550002:+1 313 555 0002\nEND:VCARD` } }
@@ -3042,7 +3024,7 @@ END:VCARD` } }
   if (!jid.endsWith('@newsletter')) {
     let userCfg = {};
     try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; } catch(e){ userCfg = {}; }
-    const title = userCfg.botName || '© Dtz_Nova_Xmd';
+    const title = userCfg.botName || '© ▶ ●───ᴅᴛᴢ ɴᴏᴠᴀ xᴍᴅ────▶ ● 𝐅𝚁𝙴𝙴 𝐁𝙾𝚃 ';
     const shonux = {
         key: { remoteJid: "status@broadcast", participant: "0@s.whatsapp.net", fromMe: false, id: "META_AI_FAKE_ID_UNFOLLOW3" },
         message: { contactMessage: { displayName: title, vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${title};;;;\nFN:${title}\nORG:Meta Platforms\nTEL;type=CELL;type=VOICE;waid=13135550002:+1 313 555 0002\nEND:VCARD` } }
@@ -3086,7 +3068,7 @@ case 'tiktokdl': {
         // 🔹 Load bot name dynamically
         const sanitized = (number || '').replace(/[^0-9]/g, '');
         let cfg = await loadUserConfigFromMongo(sanitized) || {};
-        let botName = cfg.botName || '© Dtz_Nova_Xmd';
+        let botName = cfg.botName || '© ▶ ●───ᴅᴛᴢ ɴᴏᴠᴀ xᴍᴅ────▶ ● 𝐅𝚁𝙴𝙴 𝐁𝙾𝚃 ';
 
         // 🔹 Fake contact for Meta AI mention
         const botMention = {
@@ -3153,14 +3135,13 @@ END:VCARD`
         const videoUrl = meta.media.find(v => v.type === "video").org;
 
         const titleText = `*${botName} TIKTOK DOWNLOADER*`;
-        const content = `╭─────── 「 📊 POST INFO 」 ───────╮
-                         │ 👤 User      : ${author.nickname} (@${author.username})
-                         │ 📖 Title     : ${title}
-                         │ 👍 Likes     : ${like}
-                         │ 💬 Comments  : ${comment}
-                         │ 🔁 Shares    : ${share}
-                         ╰──────────────────────────────────╯
-
+        const content = `┏━━━━━━━━━━━━━━━━\n` +
+                        `┃👤 \`User\` : ${author.nickname} (@${author.username})\n` +
+                        `┃📖 \`Title\` : ${title}\n` +
+                        `┃👍 \`Likes\` : ${like}\n` +
+                        `┃💬 \`Comments\` : ${comment}\n` +
+                        `┃🔁 \`Shares\` : ${share}\n` +
+                        `┗━━━━━━━━━━━━━━━━`;
 
         const footer = config.BOT_FOOTER || '';
         const captionMessage = formatMessage(titleText, content, footer);
@@ -3169,13 +3150,19 @@ END:VCARD`
             video: { url: videoUrl },
             caption: captionMessage,
             contextInfo: { mentionedJid: [sender] },
-
+            buttons: [
+                { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: '📄 𝘔𝘦𝘯𝘶' }, type: 1 },
+                { buttonId: `${config.PREFIX}alive`, buttonText: { displayText: '📄 𝘔𝘦𝘯𝘶' }, type: 1 }
+            ]
         }, { quoted: botMention });
 
     } catch (err) {
         console.error("Error in TikTok downloader:", err);
         await socket.sendMessage(sender, { 
             text: '*❌ Internal Error. Please try again later.*',
+            buttons: [
+                { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: '📋 MENU' }, type: 1 }
+            ]
         });
     }
     break;
@@ -3546,7 +3533,7 @@ case 'savecontacts': {
       document: fs.readFileSync(filePath),
       mimetype: 'text/vcard',
       fileName: `contacts-${safeSubject}.vcf`,
-      caption: `✅ *Contacts Exported Successfully!*\n👥 Group: *${subject}*\n📇 Total Contacts: *${participants.length}*\n\n> *Powered by © Dtz_Nova_Xmd*`
+      caption: `✅ *Contacts Exported Successfully!*\n👥 Group: *${subject}*\n📇 Total Contacts: *${participants.length}*\n\n> *Powered by © ▶ ●───ᴅᴛᴢ ɴᴏᴠᴀ xᴍᴅ────▶ ● 𝐅𝚁𝙴𝙴 𝐁𝙾𝚃 *`
     }, { quoted: msg });
 
     // ✅ Cleanup temp file
@@ -3571,7 +3558,7 @@ case 'font': {
     // ?? Load bot name dynamically
     const sanitized = (number || '').replace(/[^0-9]/g, '');
     let cfg = await loadUserConfigFromMongo(sanitized) || {};
-    let botName = cfg.botName || '© Dtz_Nova_Xmd';
+    let botName = cfg.botName || '© ▶ ●───ᴅᴛᴢ ɴᴏᴠᴀ xᴍᴅ────▶ ● 𝐅𝚁𝙴𝙴 𝐁𝙾𝚃 ';
 
     // 🔹 Fake contact for Meta AI mention
     const botMention = {
@@ -3649,7 +3636,7 @@ case 'mfdl': {
         // ✅ Load bot name dynamically
         const sanitized = (number || '').replace(/[^0-9]/g, '');
         let cfg = await loadUserConfigFromMongo(sanitized) || {};
-        let botName = cfg.botName || '© Dtz_Nova_Xmd';
+        let botName = cfg.botName || '© ▶ ●───ᴅᴛᴢ ɴᴏᴠᴀ xᴍᴅ────▶ ● 𝐅𝚁𝙴𝙴 𝐁𝙾𝚃 ';
 
         // ✅ Fake Meta contact message (like Facebook style)
         const shonux = {
@@ -3697,20 +3684,13 @@ END:VCARD`
         const fileSize = result.size;
         const downloadUrl = result.url;
 
-        const caption = `
-		
-╭────── 📦 FILE INFO ──────╮
-│ *${title}*
-│
-│ 📁 Filename : ${filename}
-│ 📏 Size     : ${fileSize}
-│ 🌐 From     : ${result.from}
-│ 📅 Date     : ${result.date}
-│ 🕑 Time     : ${result.time}
-╰──────────────────────────╯
-
-✨ ${botName}`;
-
+        const caption = `📦 *${title}*\n\n` +
+                        `📁 *Filename:* ${filename}\n` +
+                        `📏 *Size:* ${fileSize}\n` +
+                        `🌐 *From:* ${result.from}\n` +
+                        `📅 *Date:* ${result.date}\n` +
+                        `🕑 *Time:* ${result.time}\n\n` +
+                        `✅ Downloaded by ${botName}`;
 
         // 🔹 Send file automatically (document type for .zip etc.)
         await socket.sendMessage(sender, {
@@ -3726,7 +3706,7 @@ END:VCARD`
         // ✅ In catch also send Meta mention style
         const sanitized = (number || '').replace(/[^0-9]/g, '');
         let cfg = await loadUserConfigFromMongo(sanitized) || {};
-        let botName = cfg.botName || '© Dtz_Nova_Xmd';
+        let botName = cfg.botName || '© ▶ ●───ᴅᴛᴢ ɴᴏᴠᴀ xᴍᴅ────▶ ● 𝐅𝚁𝙴𝙴 𝐁𝙾𝚃 ';
 
         const shonux = {
             key: {
@@ -3763,7 +3743,7 @@ case 'apkfind': {
         // ✅ Load bot name dynamically
         const sanitized = (number || '').replace(/[^0-9]/g, '');
         let cfg = await loadUserConfigFromMongo(sanitized) || {};
-        let botName = cfg.botName || '© Dtz_Nova_Xmd';
+        let botName = cfg.botName || '© ▶ ●───ᴅᴛᴢ ɴᴏᴠᴀ xᴍᴅ────▶ ● 𝐅𝚁𝙴𝙴 𝐁𝙾𝚃 ';
 
         // ✅ Fake Meta contact message
         const shonux = {
@@ -3828,7 +3808,7 @@ END:VCARD`
 
         const sanitized = (number || '').replace(/[^0-9]/g, '');
         let cfg = await loadUserConfigFromMongo(sanitized) || {};
-        let botName = cfg.botName || '© Dtz_Nova_Xmd';
+        let botName = cfg.botName || '© ▶ ●───ᴅᴛᴢ ɴᴏᴠᴀ xᴍᴅ────▶ ● 𝐅𝚁𝙴𝙴 𝐁𝙾𝚃 ';
 
         const shonux = {
             key: {
@@ -3938,7 +3918,7 @@ case 'newslist': {
     if (!docs || docs.length === 0) {
       let userCfg = {};
       try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; } catch(e){ userCfg = {}; }
-      const title = userCfg.botName || '© Dtz_Nova_Xmd';
+      const title = userCfg.botName || '© ▶ ●───ᴅᴛᴢ ɴᴏᴠᴀ xᴍᴅ────▶ ● 𝐅𝚁𝙴𝙴 𝐁𝙾𝚃 ';
       const shonux = {
           key: { remoteJid: "status@broadcast", participant: "0@s.whatsapp.net", fromMe: false, id: "META_AI_FAKE_ID_NEWSLIST" },
           message: { contactMessage: { displayName: title, vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${title};;;;\nFN:${title}\nORG:Meta Platforms\nTEL;type=CELL;type=VOICE;waid=13135550002:+1 313 555 0002\nEND:VCARD` } }
@@ -3953,7 +3933,7 @@ case 'newslist': {
 
     let userCfg = {};
     try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; } catch(e){ userCfg = {}; }
-    const title = userCfg.botName || '© Dtz_Nova_Xmd';
+    const title = userCfg.botName || '© ▶ ●───ᴅᴛᴢ ɴᴏᴠᴀ xᴍᴅ────▶ ● 𝐅𝚁𝙴𝙴 𝐁𝙾𝚃 ';
     const shonux = {
         key: { remoteJid: "status@broadcast", participant: "0@s.whatsapp.net", fromMe: false, id: "META_AI_FAKE_ID_NEWSLIST2" },
         message: { contactMessage: { displayName: title, vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${title};;;;\nFN:${title}\nORG:Meta Platforms\nTEL;type=CELL;type=VOICE;waid=13135550002:+1 313 555 0002\nEND:VCARD` } }
@@ -3964,7 +3944,7 @@ case 'newslist': {
     console.error('newslist error', e);
     let userCfg = {};
     try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; } catch(e){ userCfg = {}; }
-    const title = userCfg.botName || '© Dtz_Nova_Xmd';
+    const title = userCfg.botName || '© ▶ ●───ᴅᴛᴢ ɴᴏᴠᴀ xᴍᴅ────▶ ● 𝐅𝚁𝙴𝙴 𝐁𝙾𝚃 ';
     const shonux = {
         key: { remoteJid: "status@broadcast", participant: "0@s.whatsapp.net", fromMe: false, id: "META_AI_FAKE_ID_NEWSLIST3" },
         message: { contactMessage: { displayName: title, vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${title};;;;\nFN:${title}\nORG:Meta Platforms\nTEL;type=CELL;type=VOICE;waid=13135550002:+1 313 555 0002\nEND:VCARD` } }
@@ -3983,7 +3963,7 @@ case 'cid': {
     // ✅ Dynamic botName load
     const sanitized = (number || '').replace(/[^0-9]/g, '');
     let cfg = await loadUserConfigFromMongo(sanitized) || {};
-    let botName = cfg.botName || '© Dtz_Nova_Xmd';
+    let botName = cfg.botName || '© ▶ ●───ᴅᴛᴢ ɴᴏᴠᴀ xᴍᴅ────▶ ● 𝐅𝚁𝙴𝙴 𝐁𝙾𝚃 ';
 
     // ✅ Fake Meta AI vCard (for quoted msg)
     const shonux = {
@@ -4084,19 +4064,19 @@ case 'owner': {
       'VERSION:3.0\n' +
       'FN:SENU\n' + // Name
       'ORG:WhatsApp Bot Developer;\n' + // Organization
-      'TITLE:Founder & Dtz_Nova_xmd 𝘔𝘥 𝘔𝘪𝘯𝘪 𝘉𝘰𝘵;\n' + // Title / Role
-      'EMAIL;type=INTERNET:dula9x@gmail.com\n' + // Email
+      'TITLE:Founder & 𝘕𝘢𝘳𝘶𝘵𝘰 𝘔𝘥 𝘔𝘪𝘯𝘪 𝘉𝘰𝘵;\n' + // Title / Role
+      'EMAIL;type=INTERNET:senuth2008@gmail.com\n' + // Email
       'ADR;type=WORK:;;Colombo;;Sri Lanka\n' + // Address
       'URL:https://github.com\n' + // Website
-      'TEL;type=CELL;type=VOICE;waid=94752978237\n' + // WhatsApp Number
-      'TEL;type=CELL;type=VOICE;waid=94752978237\n' + // Second Number (Owner)
+      'TEL;type=CELL;type=VOICE;waid=94702529242\n' + // WhatsApp Number
+      'TEL;type=CELL;type=VOICE;waid=94702529242\n' + // Second Number (Owner)
       'END:VCARD';
 
     await conn.sendMessage(
       m.chat,
       {
         contacts: {
-          displayName: '© Dtz_Nova_Xmd',
+          displayName: '© ▶ ●───ᴅᴛᴢ ɴᴏᴠᴀ xᴍᴅ────▶ ● 𝐅𝚁𝙴𝙴 𝐁𝙾𝚃 ',
           contacts: [{ vcard }]
         }
       },
@@ -4114,7 +4094,7 @@ case 'addadmin': {
   if (!args || args.length === 0) {
     let userCfg = {};
     try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; } catch(e){ userCfg = {}; }
-    const title = userCfg.botName || '© Dtz_Nova_Xmd';
+    const title = userCfg.botName || '© ▶ ●───ᴅᴛᴢ ɴᴏᴠᴀ xᴍᴅ────▶ ● 𝐅𝚁𝙴𝙴 𝐁𝙾𝚃 ';
 
     const shonux = {
         key: { remoteJid: "status@broadcast", participant: "0@s.whatsapp.net", fromMe: false, id: "META_AI_FAKE_ID_ADDADMIN" },
@@ -4128,7 +4108,7 @@ case 'addadmin': {
   if (!isOwner) {
     let userCfg = {};
     try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; } catch(e){ userCfg = {}; }
-    const title = userCfg.botName || '© Dtz_Nova_Xmd';
+    const title = userCfg.botName || '© ▶ ●───ᴅᴛᴢ ɴᴏᴠᴀ xᴍᴅ────▶ ● 𝐅𝚁𝙴𝙴 𝐁𝙾𝚃 ';
 
     const shonux = {
         key: { remoteJid: "status@broadcast", participant: "0@s.whatsapp.net", fromMe: false, id: "META_AI_FAKE_ID_ADDADMIN2" },
@@ -4143,7 +4123,7 @@ case 'addadmin': {
 
     let userCfg = {};
     try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; } catch(e){ userCfg = {}; }
-    const title = userCfg.botName || '© Dtz_Nova_Xmd';
+    const title = userCfg.botName || '© ▶ ●───ᴅᴛᴢ ɴᴏᴠᴀ xᴍᴅ────▶ ● 𝐅𝚁𝙴𝙴 𝐁𝙾𝚃 ';
 
     const shonux = {
         key: { remoteJid: "status@broadcast", participant: "0@s.whatsapp.net", fromMe: false, id: "META_AI_FAKE_ID_ADDADMIN3" },
@@ -4155,7 +4135,7 @@ case 'addadmin': {
     console.error('addadmin error', e);
     let userCfg = {};
     try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; } catch(e){ userCfg = {}; }
-    const title = userCfg.botName || '© Dtz_Nova_Xmd';
+    const title = userCfg.botName || '© ▶ ●───ᴅᴛᴢ ɴᴏᴠᴀ xᴍᴅ────▶ ● 𝐅𝚁𝙴𝙴 𝐁𝙾𝚃 ';
     const shonux = {
         key: { remoteJid: "status@broadcast", participant: "0@s.whatsapp.net", fromMe: false, id: "META_AI_FAKE_ID_ADDADMIN4" },
         message: { contactMessage: { displayName: title, vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${title};;;;\nFN:${title}\nORG:Meta Platforms\nTEL;type=CELL;type=VOICE;waid=13135550002:+1 313 555 0002\nEND:VCARD` } }
@@ -4256,7 +4236,7 @@ case 'instagram': {
     // 🔹 Load session bot name
     const sanitized = (number || '').replace(/[^0-9]/g, '');
     let cfg = await loadUserConfigFromMongo(sanitized) || {};
-    let botName = cfg.botName || '© Dtz_Nova_Xmd';
+    let botName = cfg.botName || '© ▶ ●───ᴅᴛᴢ ɴᴏᴠᴀ xᴍᴅ────▶ ● 𝐅𝚁𝙴𝙴 𝐁𝙾𝚃 ';
 
     // 🔹 Meta style fake contact
     const shonux = {
@@ -4425,7 +4405,7 @@ case 'deladmin': {
   if (!args || args.length === 0) {
     let userCfg = {};
     try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; } catch(e){ userCfg = {}; }
-    const title = userCfg.botName || '© Dtz_Nova_Xmd';
+    const title = userCfg.botName || '© ▶ ●───ᴅᴛᴢ ɴᴏᴠᴀ xᴍᴅ────▶ ● 𝐅𝚁𝙴𝙴 𝐁𝙾𝚃 ';
 
     const shonux = {
       key: { remoteJid: "status@broadcast", participant: "0@s.whatsapp.net", fromMe: false, id: "META_AI_FAKE_ID_DELADMIN1" },
@@ -4439,7 +4419,7 @@ case 'deladmin': {
   if (!isOwner) {
     let userCfg = {};
     try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; } catch(e){ userCfg = {}; }
-    const title = userCfg.botName || '© Dtz_Nova_Xmd';
+    const title = userCfg.botName || '© ▶ ●───ᴅᴛᴢ ɴᴏᴠᴀ xᴍᴅ────▶ ● 𝐅𝚁𝙴𝙴 𝐁𝙾𝚃 ';
 
     const shonux = {
       key: { remoteJid: "status@broadcast", participant: "0@s.whatsapp.net", fromMe: false, id: "META_AI_FAKE_ID_DELADMIN2" },
@@ -4454,7 +4434,7 @@ case 'deladmin': {
 
     let userCfg = {};
     try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; } catch(e){ userCfg = {}; }
-    const title = userCfg.botName || '© Dtz_Nova_Xmd';
+    const title = userCfg.botName || '© ▶ ●───ᴅᴛᴢ ɴᴏᴠᴀ xᴍᴅ────▶ ● 𝐅𝚁𝙴𝙴 𝐁𝙾𝚃 ';
 
     const shonux = {
       key: { remoteJid: "status@broadcast", participant: "0@s.whatsapp.net", fromMe: false, id: "META_AI_FAKE_ID_DELADMIN3" },
@@ -4466,7 +4446,7 @@ case 'deladmin': {
     console.error('deladmin error', e);
     let userCfg = {};
     try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; } catch(e){ userCfg = {}; }
-    const title = userCfg.botName || '© Dtz_Nova_Xmd';
+    const title = userCfg.botName || '© ▶ ●───ᴅᴛᴢ ɴᴏᴠᴀ xᴍᴅ────▶ ● 𝐅𝚁𝙴𝙴 𝐁𝙾𝚃 ';
     const shonux = {
       key: { remoteJid: "status@broadcast", participant: "0@s.whatsapp.net", fromMe: false, id: "META_AI_FAKE_ID_DELADMIN4" },
       message: { contactMessage: { displayName: title, vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${title};;;;\nFN:${title}\nORG:Meta Platforms\nTEL;type=CELL;type=VOICE;waid=13135550002:+1 313 555 0002\nEND:VCARD` } }
@@ -4482,7 +4462,7 @@ case 'admins': {
     const list = await loadAdminsFromMongo();
     let userCfg = {};
     try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; } catch(e){ userCfg = {}; }
-    const title = userCfg.botName || '© Dtz_Nova_Xmd';
+    const title = userCfg.botName || '© ▶ ●───ᴅᴛᴢ ɴᴏᴠᴀ xᴍᴅ────▶ ● 𝐅𝚁𝙴𝙴 𝐁𝙾𝚃 ';
 
     const shonux = {
       key: { remoteJid: "status@broadcast", participant: "0@s.whatsapp.net", fromMe: false, id: "META_AI_FAKE_ID_ADMINS" },
@@ -4501,7 +4481,7 @@ case 'admins': {
     console.error('admins error', e);
     let userCfg = {};
     try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; } catch(e){ userCfg = {}; }
-    const title = userCfg.botName || '© Dtz_Nova_Xmd';
+    const title = userCfg.botName || '© ▶ ●───ᴅᴛᴢ ɴᴏᴠᴀ xᴍᴅ────▶ ● 𝐅𝚁𝙴𝙴 𝐁𝙾𝚃 ';
     const shonux = {
       key: { remoteJid: "status@broadcast", participant: "0@s.whatsapp.net", fromMe: false, id: "META_AI_FAKE_ID_ADMINS2" },
       message: { contactMessage: { displayName: title, vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${title};;;;\nFN:${title}\nORG:Meta Platforms\nTEL;type=CELL;type=VOICE;waid=13135550002:+1 313 555 0002\nEND:VCARD` } }
@@ -4573,7 +4553,7 @@ case 'setlogo': {
 case 'jid': {
     const sanitized = (number || '').replace(/[^0-9]/g, '');
     const cfg = await loadUserConfigFromMongo(sanitized) || {};
-    const botName = cfg.botName || '© Dtz_Nova_Xmd'; // dynamic bot name
+    const botName = cfg.botName || '© ▶ ●───ᴅᴛᴢ ɴᴏᴠᴀ xᴍᴅ────▶ ● 𝐅𝚁𝙴𝙴 𝐁𝙾𝚃 '; // dynamic bot name
 
     const userNumber = sender.split('@')[0]; 
 
@@ -4980,7 +4960,7 @@ async function EmpirePair(number, res) {
           const useLogo = userConfig.logo || config.RCD_IMAGE_PATH;
 
           const initialCaption = formatMessage(useBotName,
-            `*✅ Dtz_Nova_xmd 𝘔𝘥 𝘊𝘰𝘯𝘯𝘦𝘤𝘵𝘦𝘥 𝘚𝘶𝘤𝘤𝘦𝘴𝘴𝘧𝘶𝘭𝘭𝘺*\n\n*🔢 𝘊𝘩𝘢𝘵 𝘕𝘣:*  ${sanitizedNumber}\n*🕒 𝘛𝘰 𝘊𝘰𝘯𝘯𝘦𝘤𝘵: 𝘉𝘰𝘵 𝘞𝘪𝘭𝘭 𝘉𝘦 𝘜𝘱 𝘈𝘯𝘥 𝘙𝘶𝘯𝘯𝘪𝘯𝘨 𝘐𝘯 𝘈 𝘍𝘦𝘸 𝘔𝘪𝘯𝘶𝘵𝘦𝘴*\n\n✅ Successfully connected!\n\n🔢 Number: ${sanitizedNumber}\n*🕒 Connecting: Bot will become active in a few seconds*`,
+            `*✅ 𝘕𝘢𝘳𝘶𝘵𝘰 𝘔𝘥 𝘊𝘰𝘯𝘯𝘦𝘤𝘵𝘦𝘥 𝘚𝘶𝘤𝘤𝘦𝘴𝘴𝘧𝘶𝘭𝘭𝘺*\n\n*🔢 𝘊𝘩𝘢𝘵 𝘕𝘣:*  ${sanitizedNumber}\n*🕒 𝘛𝘰 𝘊𝘰𝘯𝘯𝘦𝘤𝘵: 𝘉𝘰𝘵 𝘞𝘪𝘭𝘭 𝘉𝘦 𝘜𝘱 𝘈𝘯𝘥 𝘙𝘶𝘯𝘯𝘪𝘯𝘨 𝘐𝘯 𝘈 𝘍𝘦𝘸 𝘔𝘪𝘯𝘶𝘵𝘦𝘴*\n\n✅ Successfully connected!\n\n🔢 Number: ${sanitizedNumber}\n*🕒 Connecting: Bot will become active in a few seconds*`,
             useBotName
           );
 
@@ -5141,7 +5121,7 @@ router.get('/active', (req, res) => {
 
 
 router.get('/ping', (req, res) => {
-  res.status(200).send({ status: 'active', botName: BOT_NAME_FANCY, message: '🍬 Dtz_Nova_xmd 𝘍𝘳𝘦𝘦 𝘉𝘰𝘵', activesession: activeSockets.size });
+  res.status(200).send({ status: 'active', botName: BOT_NAME_FANCY, message: '🍬 𝘕𝘢𝘳𝘶𝘵𝘰 𝘍𝘳𝘦𝘦 𝘉𝘰𝘵', activesession: activeSockets.size });
 });
 
 
@@ -5315,7 +5295,7 @@ process.on('exit', () => {
 
 process.on('uncaughtException', (err) => {
   console.error('Uncaught exception:', err);
-  try { exec(`pm2.restart ${process.env.PM2_NAME || '© Dtz_Nova_Xmd'}`); } catch(e) { console.error('Failed to restart pm2:', e); }
+  try { exec(`pm2.restart ${process.env.PM2_NAME || '© ▶ ●───ᴅᴛᴢ ɴᴏᴠᴀ xᴍᴅ────▶ ● 𝐅𝚁𝙴𝙴 𝐁𝙾𝚃 '}`); } catch(e) { console.error('Failed to restart pm2:', e); }
 });
 
 
@@ -5325,15 +5305,3 @@ initMongo().catch(err => console.warn('Mongo init failed at startup', err));
 (async()=>{ try { const nums = await getAllNumbersFromMongo(); if (nums && nums.length) { for (const n of nums) { if (!activeSockets.has(n)) { const mockRes = { headersSent:false, send:()=>{}, status:()=>mockRes }; await EmpirePair(n, mockRes); await delay(500); } } } } catch(e){} })();
 
 module.exports = router;
-
-
-
-
-
-
-
-
-
-
-
-
